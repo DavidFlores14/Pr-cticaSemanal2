@@ -1,0 +1,60 @@
+﻿@model PrácticaSemanal2.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Registrarse";
+}
+<p>
+
+</p>
+    <div class="intro-text text-center">
+        <h1>Tomodachi (友達)</h1>
+    </div>
+
+
+
+<div class="row justify-content-center m-3">
+    <div class="col-md-4">
+        <div class="card mb-4">
+            <div class="card-header py-2 bg-dark">
+                <h6 class="text-white">Registro</h6>
+            </div>
+            <div class="card-body">
+                @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <h4>Registrese sin costo</h4>
+                    <hr />
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
+                    <div class="form-group">
+                        <label class="col-md-6">Correo electrónico</label>
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-6">Contraseña</label>
+                        <div class="col-md-10">
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-6">Confirmar contraseña</label>
+                        <div class="col-md-10">
+                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <button class="btn btn-dark btn-sm"><span class="text-white-50"><i class="fas fa-edit "></i></span><span class="text-white">  Registrarse</span></button>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
